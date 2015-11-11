@@ -10,8 +10,8 @@ module Shoppe
 
 
     # All products for this creator
-    has_many :product_creators, dependent: :restrict_with_exception, class: 'Shoppe::ProductCreator', inverse_of: :creator
-    has_many :products, class: 'Shoppe::Product', through: :product_creators
+    has_many :product_creators, dependent: :restrict_with_exception, class_name: 'Shoppe::ProductCreator', inverse_of: :creator
+    has_many :products, class_name: 'Shoppe::Product', through: :product_creators
 
     # Localisations
     translates :name, :permalink, :description, :short_description
