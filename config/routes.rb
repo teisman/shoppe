@@ -10,6 +10,9 @@ Shoppe::Engine.routes.draw do
   resources :product_categories do
     resources :localisations, controller: "product_category_localisations"
   end
+  resources :creators do
+    resources :localisations, controller: "creator_localisations"
+  end
   resources :products do
     resources :variants
     resources :localisations, controller: "product_localisations"

@@ -471,6 +471,20 @@ en:
         no_children: No Children
         hierarchy: Hierarchy
 
+    creators:
+      creators: Creators
+      new_creators: New creator
+      back_to_creators: Back to creator list
+      creator_information: Creator information 
+      name: Name
+      permalink: Permalink
+      description: Description
+      short_description: Short description
+      avatar: Avatar
+      add_attachments: View/add attachments
+      no_creators: No creators to display.
+      choose_creator: Choose a creator
+
     products:
       add_attachments: View/add attachments
       add_attribute: Add attribute
@@ -724,6 +738,7 @@ en:
         product_categories: Product Categories
         delivery_services: Delivery Services
         tax_rates: Tax Rates
+        creators: Creators 
         users: Users
         countries: Countries
         settings: Settings

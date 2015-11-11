@@ -4,7 +4,9 @@
     %dl
       %dt= f.label :product_categories, t('shoppe.product_category.product_categories')
       %dd= f.collection_select :product_category_ids, Shoppe::ProductCategory.ordered, :id, :name, {:prompt => false}, {:class => 'chosen', :multiple => true, :data => {:placeholder => t('shoppe.product_category.choose_product_category') }}
-
+    %dl
+      %dt= f.label :creators, t('shoppe.creators.creators')
+      %dd= f.collection_select :creator_ids, Shoppe::Creator.ordered, :id, :name, {:prompt => false}, {:class => 'chosen', :multiple => true, :data => {:placeholder => t('shoppe.creators.choose_creator') }}
     .splitContainer
       %dl.third
         %dt= f.label :name, t('shoppe.products.name')
@@ -72,6 +74,11 @@
           = f.hidden_field "attachments[data_sheet][parent_id]", value: @product.id
 
     .splitContainer.extraAttachments
+      - @product.attachments.each do |attachment|
+        - unless ["default_image", "data_sheet"].include?(attachment.role)
+          %dl.half
+            %dd
+              = attachment_preview attachment
       %dl.half
         %dd
           = attachment_preview nil, hide_if_blank: false
@@ -79,11 +86,6 @@
           = f.hidden_field "attachments[extra][parent_type]", value: "Shoppe::Product"
           = f.hidden_field "attachments[extra][parent_id]", value: @product.id
 
-      - @product.attachments.each do |attachment|
-        - unless ["default_image", "data_sheet"].include?(attachment.role)
-          %dl.half
-            %dd
-              = attachment_preview attachment
 
     %p.addAttachments= link_to t('shoppe.products.add_attachments') , '#', :data => {:behavior => 'addAttachmentToExtraAttachments'}, :class => 'button button-mini green'
 

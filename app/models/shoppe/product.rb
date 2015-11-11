@@ -22,6 +22,15 @@ module Shoppe
     # @return [Shoppe::ProductCategory]
     has_many :product_categories, class_name: 'Shoppe::ProductCategory', through: :product_categorizations
 
+    # The product's creators
+    #
+    # @return [Shoppe::ProductCreator]
+    has_many :product_creators, dependent: :destroy, class_name: 'Shoppe::ProductCreator', inverse_of: :product
+    # The product's creators
+    #
+    # @return [Shoppe::Creator]
+    has_many :creators, class_name: 'Shoppe::Creator', through: :product_creators
+
     # The product's tax rate
     #
     # @return [Shoppe::TaxRate]

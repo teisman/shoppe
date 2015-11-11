@@ -1,0 +1,15 @@
+.table
+  %table.data
+    %thead
+      %tr
+        %th{:width => '50%'}= t('shoppe.creators.name')
+        %th{:width => '50%'}= t('shoppe.creators.email')
+    %tbody
+      - if creators.empty?
+        %tr.empty
+          %td{ colspan: '2' }= t('shoppe.creators.no_creators')
+      - else
+        - for creator in creators
+          %tr
+            %td= link_to creator.name, [:edit, creator]
+            %td= link_to creator.email, [:edit, creator]
