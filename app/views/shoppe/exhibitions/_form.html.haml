@@ -1,0 +1,43 @@
+= form_for @exhibition, :html => {:multipart => true} do |f|
+  = f.error_messages
+  = field_set_tag  t('shoppe.exhibitions.exhibition_information') do
+    .splitContainer
+      %dl.half
+        %dt= f.label :name, t('shoppe.exhibitions.name')
+        %dd= f.text_field :name, :class => 'text focus'
+      %dl.half
+        %dt= f.label :permalink, t('shoppe.exhibitions.permalink')
+        %dd= f.text_field :permalink, :class => 'text'
+    %dl
+      %dt= f.label :description, t('shoppe.exhibitions.description')
+      %dd= f.text_area :description, :class => 'text'
+  = field_set_tag t('shoppe.exhibitions.attachments') do
+    .splitContainer
+      %dl.half
+        %dt= f.label "attachments[avatar][file]", t('shoppe.exhibitions.avatar')
+        %dd
+          = attachment_preview @exhibition.avatar
+          %p= f.file_field "attachments[avatar][file]"
+          = f.hidden_field "attachments[avatar][role]", value: "avatar"
+          = f.hidden_field "attachments[avatar][parent_id]", value: @exhibition.id
+    .splitContainer.extraAttachments
+      %dl.half
+        %dd
+          = attachment_preview nil, hide_if_blank: false
+          %p= f.file_field "attachments[extra][file]", :multiple => true
+          = f.hidden_field "attachments[extra][parent_type]", value: "Shoppe::Exhibition"
+          = f.hidden_field "attachments[extra][parent_id]", value: @exhibition.id
+
+      - @exhibition.attachments.each do |attachment|
+        - unless ["avatar"].include?(attachment.role)
+          %dl.half
+            %dd
+              = attachment_preview attachment
+
+    %p.addAttachments= link_to t('shoppe.exhibitions.add_attachments') , '#', :data => {:behavior => 'addAttachmentToExtraAttachments'}, :class => 'button button-mini green'
+
+  %p.submit
+    - unless @exhibition.new_record?
+      %span.right= link_to t('shoppe.delete') , @exhibition, :class => 'button purple', :method => :delete, :data => {:confirm => "Are you sure you wish to remove this exhibition?"}
+    = f.submit t('shoppe.submit'),  :class => 'button green'
+    = link_to t('shoppe.cancel'), :exhibitions, :class => 'button'

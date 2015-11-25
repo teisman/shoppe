@@ -16,6 +16,7 @@ Shoppe::NavigationManager.build(:admin_primary) do
   add_item :delivery_services
   add_item :tax_rates
   add_item :creators
+  add_item :exhibitions
   add_item :users
   add_item :countries
   add_item :settings

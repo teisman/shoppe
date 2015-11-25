@@ -1,0 +1,8 @@
+- @page_title = t('shoppe.exhibitions.exhibitions')
+
+= content_for :header do
+  %p.buttons
+    = link_to t('shoppe.exhibitions.new_exhibitions'), :new_exhibition, :class => 'button green'  
+  %h2.users= t('shoppe.exhibitions.exhibitions')
+
+= render 'table', :exhibitions => @exhibitions

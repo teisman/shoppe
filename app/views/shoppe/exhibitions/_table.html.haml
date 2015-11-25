@@ -1,0 +1,13 @@
+.table
+  %table.data
+    %thead
+      %tr
+        %th{:width => '50%'}= t('shoppe.exhibitions.name')
+    %tbody
+      - if exhibitions.empty?
+        %tr.empty
+          %td{ colspan: '2' }= t('shoppe.exhibitions.no_exhibitions')
+      - else
+        - for exhibition in exhibitions
+          %tr
+            %td= link_to exhibition.name, [:edit, exhibition]

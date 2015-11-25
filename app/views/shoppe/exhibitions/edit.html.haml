@@ -1,0 +1,7 @@
+- @page_title = t('shoppe.exhibitions.exhibitions')
+= content_for :header do
+  %p.buttons
+    = link_to t('shoppe.localisations.localisations') , [@exhibition, :localisations], :class => 'button'
+    = link_to t('shoppe.exhibitions.back_to_exhibitions') , :exhibitions, :class => 'button'
+  %h2.users= t('shoppe.exhibitions.exhibitions')
+= render 'form'

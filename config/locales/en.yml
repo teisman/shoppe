@@ -485,6 +485,20 @@ en:
       no_creators: No creators to display.
       choose_creator: Choose a creator
 
+    exhibitions:
+      exhibitions: Exhibitions
+      new_exhibitions: New exhibition
+      back_to_exhibitionss: Back to exhibition list
+      exhibition_information: Exhibition information 
+      name: Name
+      permalink: Permalink
+      description: Description
+      short_description: Short description
+      avatar: Avatar
+      add_attachments: View/add attachments
+      no_exhibitions: No exhibitions to display.
+      choose_exhibition: Choose an exhibition
+
     products:
       add_attachments: View/add attachments
       add_attribute: Add attribute
@@ -739,6 +753,7 @@ en:
         delivery_services: Delivery Services
         tax_rates: Tax Rates
         creators: Creators 
+        exhibitions: Exhibitions
         users: Users
         countries: Countries
         settings: Settings
