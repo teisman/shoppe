@@ -14,7 +14,7 @@ module Shoppe
     has_many :products, class_name: 'Shoppe::Product', through: :product_creators
 
     # Localisations
-    translates :name, :permalink, :description, :short_description
+    translates :name, :description, :short_description
 
     validates :name, presence: true
     validates :description, presence: true

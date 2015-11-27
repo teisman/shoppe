@@ -23,4 +23,4 @@
           %tr
             %td= localisation.locale
             %td= link_to localisation.name, edit_creator_localisation_path(@creator, localisation)
-            %td= localisation.permalink
+            %td= @creator.permalink
